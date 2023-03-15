@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container vh-100">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <img class="card-img-top" src="{{profile.image.url}}" alt="" />
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <table class="table table-borderless table-hover">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td>{{profile.first_name}}{{profile.lastname_name}}</td>
+          </tr>
+          <tr>
+            <th>age</th>
+            <td>{{profile.age}}</td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td>{{profile.gender}}</td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>{{profile.phone}}</td>
+          </tr>
+          <a href="{% url 'account_app:password_change' %}">Change your password?</a>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

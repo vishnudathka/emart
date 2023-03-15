@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "includes/navbar.html" %}
+
+<div class="container-fluid bg-image d-none d-md-block p-0">
+  <div class="content m-0 row h-100 justify-content-center align-items-center">
+    <div class="col-sm-6  d-flex justify-content-center align-items-center flex-wrap">
+      <h1 class="text-center text-white">Welcome to e-cart, your one-stop shop for all your online shopping needs!</h1>
+      <div class="button-group-home">
+        <button class="bg-danger text-white border-0 py-1 p"><i class="fa-solid fa-magnifying-glass text-white"></i> FIND PRODUCTS</button>
+      </div> 
+      <div class="col-12 mt-3 text-center"><a href="" style="text-decoration:none;" class="bg-success text-white pb-2 px-3 display-6 ">Shop Now</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-0 d-md-none">
+ <div class="d-flex align-items-center justify-content-center"> 
+  <img class="img-fluid" src="../../media/default/jacek-dylag-jo8C9bt3uo8-unsplash.jpg" alt="">
+  <div class="col-12 mt-3 text-center position-absolute"><a href="" style="text-decoration:none;" class="bg-success text-white pb-2 px-3 display-6 ">Shop Now</a></div>
+ </div>
+  <div class="row mt-3 h-100 justify-content-center align-items-center">
+    <div class="col-sm-6  d-flex justify-content-center align-items-center flex-wrap">
+      <h1 class="text-center w-75 ">Welcome to e-cart, your one-stop shop for all your online shopping needs!</h1>
+      <div class="button-group-home">
+        <button class="bg-success text-white border-0 py-1 w-100"><i class="fa-solid fa-magnifying-glass text-white"></i> FIND PRODUCTS</button>
+        <button class="bg-danger text-white border-0 py-1 mt-1 w-100"> <i
+          class="fa-solid fa-cart-shopping me-1"
+          ></i>MY CART</button>
+      </div> 
+    </div>
+  </div>
+</div>
+
+{% endblock %}

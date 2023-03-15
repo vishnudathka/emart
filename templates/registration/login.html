@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block content %}
+<div class="container h-100">
+  <div class="row h-25">
+    <div class="col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="logo">
+        <div class="mt-5 d-flex justify-content-center align-item-center">
+          <div>
+            <i
+              class="fa-solid fa-cart-shopping display-2 text-success mt-2"
+              style="font-size: 52px"
+            ></i>
+          </div>
+          <div>
+            <h1 class="text-success" style="font-size: 52px">E-cart</h1>
+          </div>
+        </div>
+        <div class="logo-text d-flex justify-content-center align-items-center">
+          <p class="text-success" style="font-size: 15px">
+            E for Easy to shopping
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 d-flex justify-content-center align-items-center">
+      <div class="col-8">
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          class="django-form-login"
+          id="login-form"
+        >
+          <script src="https://www.google.com/recaptcha/api.js"></script>
+          <div>{% csrf_token %} {{form.as_p}}</div>
+          <script>
+            function onSubmit(token) {
+              document.getElementById("login-form").submit();
+            }
+          </script>
+          <div class="formlink text-end">
+            <a
+              href="{% url 'account_app:password_reset' %}"
+              class="forgot_password text-dark"
+              >Forgot your password?</a
+            >
+          </div>
+          <div class="button-container text-center">
+            <div class="button-login-1 mt-3">
+              <frame-4>Login using</frame-4>
+              <button id="googleLoginButton">
+                <i class="fa-brands fa-google"></i>
+              </button>
+              <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
+              <button><i class="fa-brands fa-facebook"></i></button>
+              <button><i class="fa-brands fa-square-instagram"></i></button>
+              <button><i class="fa-brands fa-github"></i></button>
+            </div>
+            <div class="button-login-2 mt-2">
+              <button
+                class="g-recaptcha btn btn-success mt-2"
+                data-sitekey="{{ g_recaptcha_site_key }}"
+                data-callback="onSubmit"
+                data-action="submit"
+              >
+                Login
+              </button>
+              <button class="btn btn-danger mt-2">Signup</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

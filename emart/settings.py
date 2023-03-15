@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "core"
+    "core",
+    "account_app",
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+#reCaptcha credentials
+GOOGLE_RECAPTCHA_SITE_KEY = "6LclRj4kAAAAACSxqPnhvY80E7elH9Hf6AzQMlsQ"
+GOOGLE_RECAPTCHA_SECRET_KEY = "6LclRj4kAAAAAIMuxKUsx-o2pnBaO7Ey-kCOwuXV"
+GOOGLE_RECAPTCHA_VERIFY_URL ="https://www.google.com/recaptcha/api/siteverify"
