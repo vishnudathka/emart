@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block content %} {% include "includes/navbar.html"%}
+
+<div class="container wishlist_list">
+  <div class="row align-items-center justify-content-center h-100 d-block d-lg-flex">
+    <div class="col">
+      <form action="{% url 'core:wishlist_create' %}" method="post" class="input ">
+        {% csrf_token %} 
+        {{wishlist_form.as_p}}
+        <div class="text-end"><button type="submit" class="bg_wishlist pe-3"><i class="fa-solid fa-circle-plus me-2"></i>Add</button></div>
+      </form>
+    </div>
+    <div class="col mt-4">
+      <form action="" method="post">
+        {% csrf_token %}
+        <ul>
+          {% for wishlist in wishlists %}
+          <li>
+            <div class="form-check label p-2 ms-2 ps-5 mb-2">    
+              <input
+                type="checkbox"
+                class="form-check-input c-box"
+                id="id_wishlist_{{wishlist.id}}"
+                name="wishlist_id"
+                value="{{wishlist.id}}"
+                {% if product in wishlist.products.all %}
+                checked=""
+                {% endif %}
+              />
+              <label for="id_wishlist_{{wishlist.id}}" class="form-check-label d-flex align-items-center justify-content-between">
+                <div class="col-11">{{wishlist}}</div>
+                <div class="col-1"><i class="fa-solid fa-pen text-success"></i><i class="fa-solid fa-trash-can ms-2 text-danger"></i></div>
+              </label>
+              
+            </div>
+          </li>
+          {% empty %}
+          <li>No wishlists found!</li> 
+          {% endfor %}
+        </ul>
+        <div>
+          <div class="col-sm-4">
+            <button class="btn btn-success w-100"><i class="fa-solid fa-floppy-disk me-2"></i>Update my wishlist</button>
+        </div>
+        <div class="col-sm-4 mt-2 d-lg-none">
+          <button class="btn btn-danger w-100"><i
+            class="fa-solid fa-cart-shopping display-2 mt-1 me-2"
+            style="font-size: 16px"
+          ></i
+          >MY CART</button>
+      </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %} {% include "includes/navbar.html" %}
+<div class="container">
+  <div class="row">
+    {% for item in cart.items %}
+    <div class="col-6">
+      <div class="card" style="height: 400px; width: 200px;">
+       <div class="card-body">
+        {{forloop.counter}} {% for image in item.product.images.all %}
+        <img
+          src="{{image.path.url}}"
+          class="d-block img-fluid"
+          alt="item img "
+          style="
+            object-fit: scale-down;
+            background-color: white;
+            width: 100%;
+            height: 200px;
+          "
+        />
+        {% endfor %}
+
+        <a
+          class="link-primary"
+          href="{% url 'core:product_detail' item.product.id %}"
+          >{{item.product.name}}</a
+        >
+        <div class="col d-flex"><h4>price:</h4> <div class="mt-1">{{item.product.price}}</div></div>
+       <div>{{item.quantity}}</div>
+       </div>
+      </div>
+    </div>
+    {% empty %}
+    <tr>
+      <td class="text-left" colspan="5">Nothing found!</td>
+    </tr>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

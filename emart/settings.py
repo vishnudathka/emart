@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',   
     "core",
     "account_app",
 ]
@@ -101,6 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -129,7 +138,47 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+#Authentication related URLs
+LOGIN_URL = "account_app:login"
+LOGOUT_URL = "account_app:logout"
+LOGIN_REDIRECT_URL = "core:home"
+LOGOUT_REDIRECT_URL = "account_app:login"
+
+# email Integration
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "tmp/mails/"
+
+EMAIL_HOST = "smtp.google.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "kavishnudath@gmail.com"
+EMAIL_HOST_PASSWORD ="kurussarur123"
+
+EMAIL_USE_TLS = True
+
+
 #reCaptcha credentials
 GOOGLE_RECAPTCHA_SITE_KEY = "6LclRj4kAAAAACSxqPnhvY80E7elH9Hf6AzQMlsQ"
 GOOGLE_RECAPTCHA_SECRET_KEY = "6LclRj4kAAAAAIMuxKUsx-o2pnBaO7Ey-kCOwuXV"
 GOOGLE_RECAPTCHA_VERIFY_URL ="https://www.google.com/recaptcha/api/siteverify"
+
+#socialmedia integration
+SITE_ID = 1
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online'
+        },
+        'APP': {
+            'client_id':"912459305573-6r8ii0tu1m2jnukncfc8fog7lbk51jcl.apps.googleusercontent.com",
+            'secret': "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",
+            'key': ''
+        }
+    }
+}

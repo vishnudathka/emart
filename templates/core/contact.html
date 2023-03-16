@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "includes/navbar.html" %}
+<section id="contact">
+	<div class="sectionheader">	<h1>CONTACT</h1></div>
+	<article>
+	<p>Yoda soon you will call me master Governor Tarkin. A new hope Boba Fett bantha forest moon. Tusken raider Master Yoda do or do not never tell me the odds.</p>
+		
+			<label for="checkcontact" class="contactbutton"><div class="mail"></div></label><input id="checkcontact" type="checkbox">
+	
+			<form action="/contact/" method="post" enctype="multipart/form-data" class="contactform">
+        {% csrf_token %}
+				<p class="input_wrapper"><input type="text" name="name" value=""  id ="name"><label for="contact_nom">NAME</label></p>
+				<p class="input_wrapper"><input type="text" name="email" value=""  id ="email"><label for="contact_email">EMAIL</label></p>
+				<p class="input_wrapper"><input type="text" name="subject" value=""  id ="subject"><label for="contact_sujet">SUBJECT</label></p>
+				<p class="textarea_wrapper"><textarea name="message" id="message"></textarea></p>
+				<div class="submit_wrapper "><button class="btn border-0">ENVOYER</button></div>		
+			</form>
+	</article>
+</section>
+
+{% endblock %}

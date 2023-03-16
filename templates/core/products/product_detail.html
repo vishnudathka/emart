@@ -1,0 +1,263 @@
+{% extends 'base.html' %} {% block content %}{% include "includes/navbar.html"%}
+<div class="container product_detail_container d-none d-md-block">
+  <div class="row h-100 pt-3">
+    <div class="col-lg-6">
+      <div
+        id="carouselExampleControls"
+        class="carousel slideve"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          {% for image in product.images.all %}
+          <div class="carousel-item active">
+            <img
+              src="{{image.path.url}}"
+              class="d-block"
+              alt="item img "
+              style="
+                width: 100%;
+                height: 600px;
+                object-fit: scale-down;
+                background-color: white;
+              "
+            />
+          </div>
+          {% endfor %}
+        </div>
+        <button
+          class="carousel-control-prev bg-warning"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next bg-warning"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div><h4>{{product.name}}</h4></div>
+      <div class="button-group-detail-b my-4">
+        <a class="border-0 py-2 px-3" href="{% url 'core:add_to_wishlist' product.id  %}"
+          ><i class="fa-solid fa-heart me-2"></i>ADD TO WISH LIST</a
+        >
+        <a class="border-0 py-2 px-1"href="{% url 'core:review_list' product.id  %}"
+          ><i class="fa-solid fa-user me-2"></i>USER REVIEWS</a
+        >
+        <a class="border-0 py-2 px-1" href="{% url 'core:review_create' product.id  %}"
+          ><i class="fa-solid fa-pen me-2"></i>WRITE A REVIEW</a
+        >
+        <a class="border-0 py-2 px-1"><i class="fa-solid fa-share me-2"></i>SHARE</a>
+      </div>
+      <div><p>{{product.discription}}</p></div>
+      <div class="col d-flex">
+        <h4>price:</h4>
+        <h5 class="mt-1">INR {{product.price}}</h5>
+      </div>
+      <h5 class="text-warning col d-flex mt-3">
+        <i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star-half-stroke mt-1"></i
+        ><i class="fa-regular fa-star mt-1"></i>
+        <div class="text-dark ms-2">(3.5 out of 5.0)(100)</div>
+      </h5>
+      <div class="col button-group-detail-a my-4">
+        <a class="bg-success border-0 text-white px-3 py-2 me-2">
+          <i class="fa-solid fa-circle-down me-2"></i>BUY NOW
+        </a>
+        <a
+          class="bg-danger border-0 text-white px-3 py-2"
+          href="{% url 'core:add_to_cart' product.id %}"
+          ><i
+            class="fa-solid fa-cart-shopping display-2 mt-1 me-2"
+            style="font-size: 16px"
+          ></i
+          >ADD TO CART</a
+        >
+      </div>
+      <div class="row mt-1 detail_comment">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <h4>Jinto</h4>
+              <p>
+                “I am so impressed with the quality of the vegetables in this
+                kit! They are all so fresh and delicious. The variety of
+                vegetables included is also great, I've been able to try new
+                things and expand my cooking horizons.
+              </p>
+              <h6 class="text-warning col d-flex mt-3">
+                <i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star-half-stroke mt-1"></i
+                ><i class="fa-regular fa-star mt-1"></i>
+                <div class="text-dark ms-2">(3.5 out of 5.0)(100)</div>
+              </h6>
+              <div class="col d-flex gap-1">
+                <button class="bg-success border-0 text-white px-3 py-2">
+                  <i class="fa-solid fa-thumbs-up me-2"></i>Useful
+                </button>
+                <button class="bg-danger border-0 text-white px-3 py-2">
+                  <i class="fa-solid fa-thumbs-down me-2"></i>Not Useful
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <h4>Jinto</h4>
+              <p>
+                “I am so impressed with the quality of the vegetables in this
+                kit! They are all so fresh and delicious. The variety of
+                vegetables included is also great, I've been able to try new
+                things and expand my cooking horizons.
+              </p>
+              <h6 class="text-warning col d-flex mt-3">
+                <i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star mt-1"></i
+                ><i class="fa-solid fa-star-half-stroke mt-1"></i
+                ><i class="fa-regular fa-star mt-1"></i>
+                <div class="text-dark ms-2">(3.5 out of 5.0)(100)</div>
+              </h6>
+              <div class="col d-flex gap-1">
+                <button class="bg-success border-0 text-white px-3 py-2">
+                  <i class="fa-solid fa-thumbs-up me-2"></i>Useful
+                </button>
+                <button class="bg-danger border-0 text-white px-3 py-2">
+                  <i class="fa-solid fa-thumbs-down me-2"></i>Not Useful
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container product_detail_container d-md-none">
+  <div class="row h-100 pt-3">
+    <div class="col-sm-12">
+      <div
+        id="carouselExampleControls"
+        class="carousel slideve"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          {% for image in product.images.all %}
+          <div class="carousel-item active">
+            <img
+              src="{{image.path.url}}"
+              class=""
+              alt="item img "
+              style="
+                width: 100%;
+                height: 200px;
+                object-fit: scale-down;
+                background-color: white;
+              "
+            />
+          </div>
+          {% endfor %}
+        </div>
+        <button
+          class="carousel-control-prev bg-warning"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next bg-warning"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class=""><h4>{{product.name}}</h4></div>
+      <div
+        class="col-12 button-group-detail-b my-4 d-flex align-items-center justify-content-center gap-2 "
+      >
+        <div class="col-6">
+          <a class="border-0 w-100 py-2 px-3 ms-5" href="{% url 'core:add_to_wishlist' product.id %}" >
+            <i class="fa-solid fa-heart me-2"></i>ADD T O WISH LIST
+          </a>
+        </div>
+        <div class="col-6">
+          <a class="border-0 w-100 py-2 px-5">
+            <i class="fa-solid fa-share me-2"></i>SHARE
+          </a>
+        </div>
+      </div>
+      <div class="cart" style="display: hiden">
+        <div><p>{{product.discription}}</p></div>
+      </div>
+      <div class="col d-flex">
+        <h1>price:</h1>
+        <h5 class="mt-2">INR {{product.price}}</h5>
+      </div>
+      <h5 class="text-warning col d-flex mb-3">
+        <i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star mt-1"></i
+        ><i class="fa-solid fa-star-half-stroke mt-1"></i
+        ><i class="fa-regular fa-star mt-1"></i>
+        <div class="text-dark ms-2">(3.5 out of 5.0)(100)</div>
+      </h5>
+      <div
+        class="col-12 button-group-detail-b d-flex align-items-center justify-content-center gap-2"
+      >
+        <div class="col-6">
+          <a class="border-0 w-100 py-2 px-5 ms-2">
+            <i class="fa-solid fa-user me-2"></i>USER REVIEWS
+          </a>
+        </div>
+        <div class="col-6 ms-3">
+          <a class="border-0 w-100 py-2 px-4"  href="{% url 'core:review_create' product.id  %}">
+            <i class="fa-solid fa-pen me-2"></i>WRITE A REVIEW
+          </a>
+        </div>
+      </div>
+      <div
+        class="col-12 button-group-detail-a my-4 d-flex justify-content-center align-items-center"
+      >
+        <div class="col-6">
+          <a class="bg-success border-0 text-white px-3 py-2 px-5 w-100 ms-4">
+            <i class="fa-solid fa-circle-down me-2"></i>BUY NOW
+          </a>
+        </div>
+        <div class="col-6">
+          <a class="bg-danger border-0 text-white px-4 py-2 w-100">
+            <i
+              class="fa-solid fa-cart-shopping display-2 mt-1 me-2"
+              style="font-size: 16px"
+            ></i
+            >ADD TO CART
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

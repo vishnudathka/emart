@@ -1,6 +1,4 @@
-from django.shortcuts import render
 
-# Create your views here.
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import generic as views
@@ -17,7 +15,8 @@ import json
 from django.contrib.auth.models import User
 from django.views import View
 from account_app.models import ProfileModel
-
+from django.contrib.auth.views import LoginView
+from django.views.generic import TemplateView
 
 
 
@@ -58,7 +57,7 @@ class SignupView(views.CreateView):
 #         return super().form_invalid(form)
 
 
-class CustomLoginView(auth_views.LoginView):
+class CustomLoginView(LoginView):
     redirect_login_user = True
     enable_recaptcha = True
     extra_context = {"g_recaptcha_site_key": settings.GOOGLE_RECAPTCHA_SITE_KEY}
@@ -76,9 +75,13 @@ class CustomLoginView(auth_views.LoginView):
             ).json()
             verified = response.get("success")
             if not verified:
-                return super().form_invalid(form)
-        print(form)
+                return self.form_invalid(form)
+
         return super().form_valid(form)
+
+
+class HomePageView(TemplateView):
+    template_name = "home.html"
 
  
 class LogoutView(views.View):

@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% block content %} {% include "includes/navbar.html"%}
+
+
+<div class="container product_list">
+  <div class="row">
+    <div class="col">
+      <div class="">
+        <form class="d-flex p-head-1" method="get" action="{% url 'core:find_product' %}">
+          <input
+          type="search"
+          class="search-p mt-2"
+          placeholder="Type product name, category or anything here..."
+          aria-label="Search"
+          name="q"
+        />
+        <button class="btn btn-success s-button mb-2">
+          <i class="fa-solid fa-magnifying-glass text-white me-2"></i>Find
+          Products
+        </button>
+        </form>
+       
+      </div>
+      <div
+        class="d-md-flex align-items-center justify-content-between p-head-2"
+      >
+        <h2 class="mt-5 mb-4">Search results</h2>
+        <button class="mt-5 f-button">
+          Filter<i class="fa-solid fa-sliders ms-2"></i>
+        </button>
+      </div>
+      <div class="p-head-3 d-md-none">
+        <h2 class="mt-5 mb-4">Popular Products</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-lg-4 row-cols-1 g-3">
+    {% for product in products %}
+    <div class="col">
+      <div class="card">
+        {% for image in product.images.all %}
+        <img
+          height="200px"
+          width="200px"
+          src="{{image.path.url}}"
+          class="card-img-top"
+          style="width: 100; object-fit: scale-down; background-color: white"
+        />
+        {% endfor %}
+        <div class="card-body">
+          <a
+            class="card-title"
+            href="{% url 'core:product_detail' product.id %}"
+            ><h5>{{product.name|truncatewords:"10"}}</h5></a
+          >
+
+          <p class="card-text mt-3">{{product.discription|truncatewords:"10"}}</p>
+          <h5 class="card-text-1 my-3">INR{{product.price}}</h5>
+          <h5 class="text-warning col d-flex mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star"></i
+            ><i class="fa-solid fa-star-half-stroke"></i
+            ><i class="fa-regular fa-star"></i>
+            <div class="text-dark">(3.5 out of 5.0)</div>
+          </h5>
+          <div
+            class="d-flex align-items-center justify-content-center gap-2 flex-wrap"
+          >
+            <a href="#" class="btn btn-success w-100 buy"
+              ><i class="fa-solid fa-circle-down"></i> BUY NOW</a
+            >
+            <a href="#" class="btn btn-danger w-100 cart">
+              <i
+                class="fa-solid fa-cart-shopping display-2 mt-1 me-2"
+                style="font-size: 16px"
+              ></i
+              >ADD TO CART</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+<a href="{% url 'core:product_delete' product.id %}" class="btn btn-secondary"
+  >Delete</a
+>
+<a href="{% url 'core:product_update' product.id %}" class="btn btn-secondary"
+  >update</a
+>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h1>Wishlist</h1>
+        <span>
+          <a href="{% url 'core:wishlist_list' %}" class="btn btn-primary">
+            Wishlists
+          </a>
+        </span>
+      </div>
+      <hr />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form method="post">
+        {% csrf_token %} 
+        {{form.as_p}}
+        <div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
