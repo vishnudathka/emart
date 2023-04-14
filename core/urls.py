@@ -51,7 +51,7 @@ urlpatterns =[
     ),
     path(
         "cart/", views.AddToCartlistView.as_view(), name="cart_list"
-    ),
+    ),   
     # review
     path(
         "reviews/add/product/<int:pk>/",
@@ -63,4 +63,6 @@ urlpatterns =[
         views.ReviewListView.as_view(),
         name="review_list",
     ),
+    #order
+    
 ]

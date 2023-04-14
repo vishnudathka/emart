@@ -75,7 +75,7 @@ nav {
   width: 200px;
 }
 
-.button-login-1 button {
+.button-login-1 button,#googleLoginButton {
   border-style: none;
   border-radius: 20px;
   margin: 13px;

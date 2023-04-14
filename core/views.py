@@ -16,6 +16,7 @@ class HomeView(views.TemplateView):
     template_name = "core/home.html"
     extra_context = {
         "products": models.ProductModel.objects.all(),
+        
     }
 
 
@@ -247,9 +248,9 @@ class WishlistListView(auth_mixins.LoginRequiredMixin, views.ListView):
 
 
 class AddToCartView(views.View):
-   
-    
-    def get(self, request, *args, **kwargs):
+
+    def get(self, request, *args, **kwargs): 
+        
         cart, cart_created = models.CartModel.objects.get_or_create(
             user=request.user, is_checked_out=False
         )
@@ -264,8 +265,9 @@ class AddToCartView(views.View):
             cart_item.quantity += 1
 
         cart_item.save()
-        url = request.META.get("HTTP_REFERER")
+        url = request.META.get("HTTP_REFERER") 
         return redirect(url)
+
 class AddToCartlistView(views.ListView):
      template_name = "core/cart/cart_list.html"
      model = models.CartItemModel

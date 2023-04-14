@@ -179,7 +179,7 @@ class OrderModel(TimestampedModel):
     is_paid = models.BooleanField(default=False)
 
 
-class PaymentModel(TimestampedModel):
+class PaymentModel(TimestampedModel): 
 
     payment_id = models.CharField(max_length=255, unique=True)
     receipt_no = models.CharField(max_length=255, unique=True)

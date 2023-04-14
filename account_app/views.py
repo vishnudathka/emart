@@ -83,6 +83,9 @@ class CustomLoginView(LoginView):
 class HomePageView(TemplateView):
     template_name = "home.html"
 
+class password_reset_confirmView(views.View):
+    template_name = "password_reset_comfirm.html"    
+
  
 class LogoutView(views.View):
     def get(self, request):

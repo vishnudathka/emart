@@ -46,10 +46,9 @@
           <div class="button-container text-center">
             <div class="button-login-1 mt-3">
               <frame-4>Login using</frame-4>
-              <button id="googleLoginButton">
-                <i class="fa-brands fa-google"></i>
-              </button>
-              <button><a href="{% provider_login_url 'google' %}">Sign in with Google</a></button>
+              <a id="googleLoginButton" href="{% provider_login_url 'google' %}"
+                ><i class="fa-brands fa-google text-dark"></i
+              ></a>
               <button><i class="fa-brands fa-facebook"></i></button>
               <button><i class="fa-brands fa-square-instagram"></i></button>
               <button><i class="fa-brands fa-github"></i></button>

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',   
     "core",
-    "account_app",
+    'account_app',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.common_data"
             ],
         },
     },
@@ -85,7 +86,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -148,18 +148,19 @@ LOGOUT_REDIRECT_URL = "account_app:login"
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "tmp/mails/"
 
-EMAIL_HOST = "smtp.google.com"
+EMAIL_HOST = 'smtp.google.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "kavishnudath@gmail.com"
-EMAIL_HOST_PASSWORD ="kurussarur123"
+EMAIL_HOST_USER = 'kavishnudath@gmail.com'
+EMAIL_HOST_PASSWORD ='kurussarur123'
 
 EMAIL_USE_TLS = True
 
 
-#reCaptcha credentials
+#reCaptcha credentials  
 GOOGLE_RECAPTCHA_SITE_KEY = "6LclRj4kAAAAACSxqPnhvY80E7elH9Hf6AzQMlsQ"
 GOOGLE_RECAPTCHA_SECRET_KEY = "6LclRj4kAAAAAIMuxKUsx-o2pnBaO7Ey-kCOwuXV"
 GOOGLE_RECAPTCHA_VERIFY_URL ="https://www.google.com/recaptcha/api/siteverify"
+GOOGLE_API_KEY = "AIzaSyC0lidOwtqgIeBweyZtoXTuPMkN9HStuf0"
 
 #socialmedia integration
 SITE_ID = 1

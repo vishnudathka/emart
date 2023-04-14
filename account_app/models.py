@@ -61,4 +61,3 @@ class ProfileModel(models.Model):
     def get_absolute_url(self): 
         return reverse("account_app:profile_detail", args=(self.id,)) 
     
-    
