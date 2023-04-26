@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-gg0a1sbd*mi8$c0q5odh195u!x-q31u9+8#5uw$s_wq9fc43%^"
+
+# stripe keys
+STRIPE_SECRET_KEY = 'sk_test_51MyUkgSDGuZOyrByhHpjZSWT5QrJUOSJy3GXSqq0hDX6qorowONxRAX4gCxkKS8QeXgKlMPwO7qCo6b0d3kwkdem00Gy03THZS'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MyUkgSDGuZOyrByAejwPkghVVL9yBOBquMZO5ivjMYGNytlo2LVWUPOSWMPF2iAq4Y9LTwrj0Yi0pjz4IIU00xL00vmHZq9RY'
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',   
     "core",
     'account_app',
+    "payments",
+   
 ]
 
 MIDDLEWARE = [

@@ -23,7 +23,7 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("account_app/", include("account_app.urls", namespace="account_app")),
     path('accounts/', include('allauth.urls')),
-  
+    path("", include("payments.urls", namespace="payments")),
     
 ]
 
